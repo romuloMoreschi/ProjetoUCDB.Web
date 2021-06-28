@@ -1,0 +1,66 @@
+<app-menu-top></app-menu-top>
+
+<div class="container">
+    <form (ngSubmit)="enviar(produto)">
+        <div class="row">
+            <div class="col-sm-5 text-right">
+                <label class="control-label">Produto ID</label>
+            </div>
+            <div class="col-sm-4">
+                <input readonly="readonly" required type="text" class="form-control" name="id" [(ngModel)]="produto.id"
+                    [ngModelOptions]="{ standalone: true }">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-5 text-right">
+                <label class="control-label">Nome do produto</label>
+            </div>
+            <div class="col-sm-4">
+                <input required type="text" class="form-control" name="nome_produto" [(ngModel)]="produto.nome_produto"
+                   [ngModelOptions]="{ standalone: true }">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-5 text-right">
+                <label class="control-label">Valor do produto</label>
+            </div>
+            <div class="col-sm-4">
+                <input required type="text" class="form-control" name="valor" [(ngModel)]="produto.valor"
+                    [ngModelOptions]="{ standalone: true }">
+            </div>
+        </div>        
+
+        <div [ngClass]="applDiscount(produto.situacao)">
+            <div class="col-sm-5 text-right">
+                <label class="control-label">Desconto do produto</label>
+            </div>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" name="valor" [(ngModel)]="produto.desconto"
+                    [ngModelOptions]="{ standalone: true }">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-5 text-right">
+                <label class="control-label">Data de vencimento</label>
+            </div>
+            <div class="col-sm-4">
+                <input matInput [matDatepicker]="picker" [(ngModel)]="produto.dateModel"
+                    [ngModelOptions]="{ standalone: true }">
+                <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+                <mat-datepicker #picker ></mat-datepicker>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-5 text-right"></div>
+            <div class="col-sm-4">
+                <button class="mt-4" style="width: 50%;" mat-raised-button color="primary" type="submit">Atualizar
+                    produto</button>
+                <button class="mt-4" style="width: 50%;" mat-raised-button color="primary"
+                    (click)="voltar()">Voltar</button>
+            </div>
+        </div>
+    </form>
+</div>

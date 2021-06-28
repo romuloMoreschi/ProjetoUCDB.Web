@@ -1,0 +1,53 @@
+<app-menu-top></app-menu-top>
+
+<div class="container">
+
+    <div class="table-responsive ">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Produto Id</th>
+                    <th>Nome do produto</th>
+                    <th>Valor</th>
+                    <th>Desconto</th>
+                    <th>Data de vencimento</th>
+                    <th>Situação</th>
+                    <th>Acoes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let p of produtos">
+                    <td>
+                        {{p.id}}
+                    </td>
+                    <td>
+                        {{p.nome_produto}}
+                    </td>
+                    <td>
+                        R$ {{p.valor}}
+                    </td>
+                    <td>
+                        {{p.desconto}}%
+                    </td>
+                    <td>
+                        {{p.data_vencimento}}
+                    </td>
+                    <td>
+                        <span [ngClass]="getCircle(p.situacao)"></span>
+                    </td>
+                    <td>
+                        <a mat-icon-button role="button" (click)="discount(p)">
+                            <mat-icon>price_check</mat-icon>
+                        </a>
+                        <a mat-icon-button role="button" (click)="atualizar(p)">
+                            <mat-icon>update</mat-icon>
+                        </a>
+                        <a mat-icon-button color="danger" role="button" (click)="deletar(p.id)">
+                            <mat-icon>delete</mat-icon>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
